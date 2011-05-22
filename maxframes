@@ -1,0 +1,356 @@
+// [2011-04-05] Major issues reported on some (NOT all) PCs when specifying mat_antialias directly. Try removing it if you have problems.
+// As an alternative, you can try adding +mat_antialias 1 to your launch options.
+
+// NOTE: If you experience crashes out of the blue, put all of the cvars in the threading section to "0".
+// ---------------------------------------------------------------------------------------------------------------------------------
+// Chris' maxframes config, designed to get you a large performance boost
+// v1.083 | 22 May 2011 | fakkelbrigade.eu/chris/configs/
+// ---------------------------------------------------------------------------------------------------------------------------------
+// Problems or questions? Contact me at #christf2 on QuakeNet.
+// ---------------------------------------------------------------------------------------------------------------------------------
+// Some of the commands in here are redundant to others, they are failsafes for server-side variable locks.
+//
+// Launch options:
+// FOR FULLSCREEN: -dxlevel 81 -full -w WIDTH -h HEIGHT -console -novid -useforcedmparms -noforcemaccel -noforcemspd
+// FOR WINDOWED MODE: -dxlevel 81 -sw -w WIDTH -h HEIGHT -console -noborder -novid -useforcedmparms -noforcemaccel -noforcemspd
+//
+// ---------------------------------------------------------------------------------------------------------------------------------
+//                                                           CONFIG BEGINS
+// ---------------------------------------------------------------------------------------------------------------------------------
+
+sv_cheats "1" // To change vars that require a sv_cheats enabled server without error
+
+// ---------------------------------------------------------------------------------------------------------------------------------
+//                                              SETTINGS THAT YOU MAY WISH TO CUSTOMISE
+// ---------------------------------------------------------------------------------------------------------------------------------
+
+// To uncomment a section, remove the // from all but the description line.
+
+// -------
+// FPS CAP
+// -------
+fps_max "121" // Caps fps to improve performance. The best value for this is freq * 2 + 1. Do not set lower than cl_cmdrate or you will experience hitreg issues.
+
+// ------------
+// NET SETTINGS
+// ------------
+
+// Net settings for good connections -- UNCOMMENT THIS SECTION IF YOU WANT THESE SETTINGS
+//cl_cmdrate "66"
+//cl_interp "0.016" // Change to 0.024 for hitscan
+//cl_interp_ratio "1"
+//cl_lagcompensation "1"
+//cl_pred_optimize "2"
+//cl_smooth "0"
+//cl_smoothtime "0.01"
+//cl_updaterate "66"
+//rate "60000"
+
+// Net settings for moderate or bad internet connections -- UNCOMMENT THIS SECTION IF YOU WANT THESE SETTINGS
+//cl_cmdrate "40"
+//cl_interp "0.025" // Change to 0.0375 for hitscan
+//cl_interp_ratio "1"
+//cl_lagcompensation "1"
+//cl_pred_optimize "2"
+//cl_smooth "0"
+//cl_smoothtime "0.01"
+//cl_updaterate "40"
+//rate "35000"
+
+// ------
+// SPRAYS
+// ------
+
+// Enable sprays -- not enabled by default
+cl_playerspraydisable "0"
+r_decals "200"
+r_spray_lifetime "2"
+
+// Disable sprays -- DELETE THIS SECTION IF YOU WANT SPRAYS ENABLED
+cl_playerspraydisable "1"
+r_decals "0"
+r_spray_lifetime "0"
+
+// -------
+// SHADOWS
+// -------
+
+// Enable shadows -- not enabled by default
+mat_shadowstate "1"
+r_shadowmaxrendered "11"
+r_shadowrendertotexture "0" // Set this to 1 for high definition shadows
+r_shadows "1"
+
+// Disable shadows -- DELETE THIS SECTION IF YOU WANT SHADOWS ENABLED
+mat_shadowstate "0"
+r_shadowmaxrendered "0"
+r_shadowrendertotexture "0"
+r_shadows "0"
+
+// ---------------
+// FACIAL FEATURES
+// ---------------
+
+// Enable facial features -- not enabled by default
+blink_duration "0.2"
+r_eyes "1"
+r_flex "1"
+r_lod "1"
+r_rootlod "1"
+r_teeth "1"
+flex_rules "1"
+flex_smooth "1"
+
+// Disable facial features -- DELETE THIS SECTION IF YOU WANT FACIAL FEATURES ENABLED
+blink_duration "0"
+r_eyes "0"
+r_flex "0"
+r_lod "2"
+r_rootlod "2"
+r_teeth "0"
+flex_rules "0"
+flex_smooth "0"
+
+// --------
+// RAGDOLLS
+// --------
+
+// Enable ragdolls -- not enabled by default
+cl_ragdoll_fade_time "15"
+cl_ragdoll_forcefade "0"
+cl_ragdoll_physics_enable "1"
+g_ragdoll_fadespeed "600"
+g_ragdoll_lvfadespeed "100"
+ragdoll_sleepaftertime "5.0f"
+
+// Disable ragdolls -- DELETE THIS SECTION IF YOU WANT RAGDOLLS ENABLED
+cl_ragdoll_fade_time "0"
+cl_ragdoll_forcefade "1"
+cl_ragdoll_physics_enable "0"
+g_ragdoll_fadespeed "0"
+g_ragdoll_lvfadespeed "0"
+ragdoll_sleepaftertime "0"
+
+// ----
+// GIBS
+// ----
+
+// Enable gibs -- not enabled by default
+cl_phys_props_enable "1"
+cl_phys_props_max "128"
+props_break_max_pieces "-1"
+r_propsmaxdist "1000"
+violence_ablood "1"
+violence_agibs "1"
+violence_hblood "1"
+violence_hgibs "1"
+
+// Disable gibs -- DELETE THIS SECTION IF YOU WANT GIBS ENABLED
+cl_phys_props_enable "0"
+cl_phys_props_max "0"
+props_break_max_pieces "0"
+r_propsmaxdist "1"
+violence_ablood "0"
+violence_agibs "0"
+violence_hblood "0"
+violence_hgibs "0"
+
+// ---------------------------------------------------------------------------------------------------------------------------------
+//                                                      END OF CUSTOMISATION
+// ---------------------------------------------------------------------------------------------------------------------------------
+
+// Cleaning up and stopping debug flooding
+adsp_debug "0"
+cl_clearhinthistory "1"
+cl_debugrumble "0"
+cl_rumblescale "0"
+mat_debugdepthval "0"
+mat_debugdepthvalmax "0"
+mat_debug_postprocessing_effects "0"
+
+// Graphical
+cl_burninggibs "0"
+cl_detaildist "0"
+cl_detailfade "0"
+cl_drawmonitors "0"
+cl_ejectbrass "0"
+cl_muzzleflash_dlight_1st "0"
+cl_ragdoll_collide "0"
+cl_show_splashes "0"
+func_break_max_pieces "0"
+glow_outline_effect_enable "0"
+lod_transitiondist "0"
+mat_aaquality "0"
+mat_alphacoverage "0"
+mat_antialias "1"
+mat_autoexposure_max "0"
+mat_autoexposure_min "0"
+mat_bloomscale "0"
+mat_bloom_scalefactor_scalar "0"
+mat_bumpmap "0"
+mat_colcorrection_disableentities "1"
+mat_colorcorrection "0"
+mat_compressedtextures "1"
+mat_disable_bloom "1"
+mat_disable_fancy_blending "1"
+mat_disable_lightwarp "1"
+mat_envmapsize "0"
+mat_envmaptgasize "0"
+mat_excludetextures "1"
+mat_fastnobump "0"
+mat_fastspecular "1"
+mat_filterlightmaps "0"
+mat_filtertextures "0"
+mat_forceaniso "0"
+mat_hdr_level "0"
+mat_max_worldmesh_vertices "0"
+mat_mipmaptextures "1"
+mat_monitorgamma "2.0" // Controls brightness, try 1.8 to get it brighter or 2.2 to get it darker. Only works in fullscreen.
+mat_motion_blur_enabled "0"
+mat_non_hdr_bloom_scalefactor "0"
+mat_parallaxmap "0"
+mat_picmip "2"
+mat_postprocess_x "0"
+mat_postprocess_y "0"
+mat_reducefillrate "1"
+mat_reduceparticles "1"
+mat_softwarelighting "0"
+mat_software_aa_blur_one_pixel_lines "0"
+mat_software_aa_strength "0"
+mat_software_aa_strength_vgui "0"
+mat_software_aa_tap_offset "0"
+mat_specular "0" // Set to 1 for shiny ubers
+mat_trilinear "0"
+mat_wateroverlaysize "0"
+mp_usehwmmodels "0"
+mp_usehwmvcds "0"
+muzzleflash_light "0"
+rope_averagelight "0"
+rope_collide "0"
+rope_rendersolid "0"
+rope_shake "0"
+rope_smooth "0"
+rope_smooth_enlarge "0"
+rope_smooth_maxalpha "0"
+rope_smooth_maxalphawidth "0"
+rope_smooth_minalpha "0"
+rope_smooth_minwidth "0"
+rope_solid_maxalpha "0"
+rope_solid_maxwidth "0"
+rope_solid_minalpha "0"
+rope_solid_minwidth "0"
+rope_subdiv "0"
+rope_wind_dist "0"
+r_3dsky "0"
+r_ambientboost "0"
+r_ambientfactor "0"
+r_ambientmin "0"
+r_avglight "0"
+r_bloomtintb "0"
+r_bloomtintexponent "0"
+r_bloomtintg "0"
+r_bloomtintr "0"
+r_cheapwaterend "1"
+r_cheapwaterstart "1"
+r_decalstaticprops "0"
+r_decal_cullsize "0"
+r_dopixelvisibility "0"
+r_drawbatchdecals "0"
+r_drawdetailprops "0"
+r_drawflecks "0"
+r_drawmodeldecals "0"
+r_drawspecificstaticprop "0"
+r_dynamic "0"
+r_eyemove "0"
+r_flashlightdepthtexture "0"
+r_flashlightrendermodels "0"
+r_flashlightrenderworld "0"
+r_forcewaterleaf "1"
+r_lightaverage "0"
+r_maxdlights "0"
+r_maxmodeldecal "0"
+r_maxnewsamples "0"
+r_maxsampledist "0"
+r_minnewsamples "0"
+r_physpropstaticlighting "0"
+r_pixelfog "0"
+r_radiosity "0"
+r_renderoverlayfragment "0"
+r_ropetranslucent "0"
+r_staticprop_lod "4"
+r_updaterefracttexture "0"
+r_visualizeproplightcaching "1"
+r_waterdrawreflection "0"
+r_waterdrawrefraction "1"
+r_waterforceexpensive "0"
+r_waterforcereflectentities "0"
+r_worldlights "0"
+tf_particles_disable_weather "1" // Set to 0 to enable weather effects on maps like Viaduct and Sawmill
+
+// Misc
+cl_predict "1"
+cl_predictweapons "1"
+cl_showfps "1" // Show unsmoothed FPS meter
+cl_showpluginmessages "0"
+
+// Performance
+cl_forcepreload "1" // Preloads maps, may cause a few seconds more loading the map at the benefit of a more consistent FPS (because the whole map is preloaded)
+cl_soundemitter_flush "1"
+//m_rawinput "1" // Uncomment to enable raw mouse input -- DO NOT ENABLE IF YOU ARE USING XFIRE OVERLAY
+mat_bufferprimitives "1"
+mat_clipz "1" // FX owners should set this to 0
+mat_disablehwmorph "0"
+mat_disable_ps_patch "1"
+mat_forcehardwaresync "0"
+mat_forcemanagedtextureintohardware "0"
+mat_framebuffercopyoverlaysize "0"
+mat_levelflush "0"
+mat_maxframelatency "0"
+mat_postprocessing_combine "1"
+mat_vsync "0"
+r_fastzreject "-1" // Some ATI cards aren't autodetected, if you know that your card supports it, try setting it to 1.
+r_hunkalloclightmaps "0"
+r_lightcache_zbuffercache "0"
+r_occlusion "1"
+r_unloadlightmaps "0"
+soundscape_flush "1"
+
+// Sound
+dsp_enhance_stereo "0"
+dsp_slow_cpu "1" 
+snd_async_fullyasync "1" // Can help stop freezes and sound looping
+snd_pitchquality "0"
+snd_spatialize_roundrobin "1"
+
+// Threading
+cl_threaded_bone_setup "0"
+cl_threaded_client_leaf_system "0"
+mat_queue_mode "-1"
+r_threaded_client_shadow_manager "1"
+r_threaded_particles "1"
+r_threaded_renderables "1"
+r_queued_decals "0"
+r_queued_post_processing "0"
+r_queued_ropes "1"
+
+sv_cheats "0"
+
+// Console printout
+clear
+echo "-------------------------------------------------------"
+echo "             Chris' maxframes config loaded.           "
+echo "-------------------------------------------------------"
+echo "Please direct all comments/queries/whatnot to"
+echo "#christf2 on QuakeNet."
+echo " "
+echo "-------------------------------------------------------"
+echo "                      Memory stats                     "
+echo "-------------------------------------------------------"
+memory
+echo " "
+echo "-------------------------------------------------------"
+echo "                      Code support                     "
+echo "-------------------------------------------------------"
+r_3dnow
+r_sse2
+echo "-------------------------------------------------------"
