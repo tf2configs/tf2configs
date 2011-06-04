@@ -4,7 +4,7 @@
 // NOTE: If you experience crashes out of the blue, put all of the cvars in the threading section to "0".
 // ---------------------------------------------------------------------------------------------------------------------------------
 // Chris' maxquality config, designed to get you excellent quality
-// v1.037 | 22 May 2011 | fakkelbrigade.eu/chris/configs/
+// v1.038 | 04 June 2011 | fakkelbrigade.eu/chris/configs/
 // ---------------------------------------------------------------------------------------------------------------------------------
 // Problems or questions? Contact me at #christf2 on QuakeNet.
 // ---------------------------------------------------------------------------------------------------------------------------------
@@ -94,7 +94,7 @@ mat_motion_blur_enabled "1"
 mat_motion_blur_forward_enabled "1"
 mat_motion_blur_strength "1"
 mat_parallaxmap "1"
-mat_picmip "-10"
+mat_picmip "-1"
 mat_postprocess_x "8"
 mat_postprocess_y "8"
 mat_reducefillrate "0"
