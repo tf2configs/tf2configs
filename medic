@@ -13,7 +13,6 @@
 // M2 = Syringe gun/blutsauger, when getting out will make all teammates call out
 // M3 = Bonesaw/ubersaw
 // M4 = Charge, will switch to medi gun/kritzkrieg automatically, will drops any intelligence being carried, and will also mask the "go go go" voice command
-// Mouse wheel = Scroll up for syringe gun, down for medi gun/kritzkrieg
 // C = Vocalise fake ubercharge to enemy team
 //
 // Shift commands:
@@ -86,8 +85,6 @@ bind "mouse1" "+heal"
 bind "mouse2" "+needles"
 bind "mouse3" "+saw"
 bind "mouse4" "+charge"
-bind "mwheelup" "slot1bind"
-bind "mwheeldown" "slot2bind"
 bind "shift" "+shiftmask"
 
 // Print to console
