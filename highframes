@@ -45,7 +45,7 @@ cl_showfps 1 // Show unsmoothed FPS meter
 // Generally, meeting both of the following conditions would classify it as a
 // good connection:
 //
-// - Ping of >80 to the average server you join
+// - Ping of <80 to the average server you join
 // - Generally no/negligible choke/loss (can be checked with `net_graph')
 //
 // There's some pretty good documentation on this here:
