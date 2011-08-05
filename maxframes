@@ -1,353 +1,339 @@
-// [2011-04-05] Major issues reported on some (NOT all) PCs when specifying mat_antialias directly. Try removing it if you have problems.
-// As an alternative, you can try adding +mat_antialias 1 to your launch options.
-
-// NOTE: If you experience crashes out of the blue, put all of the cvars in the threading section to "0".
-// ---------------------------------------------------------------------------------------------------------------------------------
+// Unexplained crashes? Try changing mat_queue_mode to `-1'.
+// ----------------------------------------------------------------------------
 // Chris' maxframes config, designed to get you a large performance boost
-// v1.083 | 22 May 2011 | fakkelbrigade.eu/chris/configs/
-// ---------------------------------------------------------------------------------------------------------------------------------
+// v2.000 | 05 August 2011 | fakkelbrigade.eu/chris/configs/
+// ----------------------------------------------------------------------------
 // Problems or questions? Contact me at #christf2 on QuakeNet.
-// ---------------------------------------------------------------------------------------------------------------------------------
-// Some of the commands in here are redundant to others, they are failsafes for server-side variable locks.
-//
+// ----------------------------------------------------------------------------
 // Launch options:
-// FOR FULLSCREEN: -dxlevel 81 -full -w WIDTH -h HEIGHT -console -novid -useforcedmparms -noforcemaccel -noforcemspd
-// FOR WINDOWED MODE: -dxlevel 81 -sw -w WIDTH -h HEIGHT -console -noborder -novid -useforcedmparms -noforcemaccel -noforcemspd
+// Fullscreen: -dxlevel 81 -full -w WIDTH -h HEIGHT -console -novid -useforcedmparms -noforcemaccel -noforcemspd
+// Windowed:   -dxlevel 81 -sw -w WIDTH -h HEIGHT -console -noborder -novid -useforcedmparms -noforcemaccel -noforcemspd
+// Remove -dxlevel 81 from the launch options after the first launch!
+// ----------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------
+// FPS cap
+// ----------------------------------------------------------------------------
+// The primary benefit of an FPS cap is to make the FPS more stable, other than
+// that, it doesn't do a lot. A moderate, consistent framerate is much more
+// desirable than a variable but sometimes high framerate. A common
+// misconception is that if any more frames are generated than your monitor can
+// display, they are useless. This is wrong -- frames are used for much more
+// than mere display, and affect the way the game feels well past your
+// refresh rate.
 //
-// ---------------------------------------------------------------------------------------------------------------------------------
-//                                                           CONFIG BEGINS
-// ---------------------------------------------------------------------------------------------------------------------------------
+// This FPS cap should *always* be set to a value higher than `cl_cmdrate' in
+// any case, or the discrepancy between clientside frame generation and frames
+// to be sent to the server will no doubt cause you many a headache, especially
+// when it comes down to hit registration. Other than that, I recommend
+// for everyone to use the value `132' (2*66), as long as you can generally
+// keep that value stable without regular drops.
+// ----------------------------------------------------------------------------
+fps_max 132
+cl_showfps 1 // Show unsmoothed FPS meter
 
-sv_cheats "1" // To change vars that require a sv_cheats enabled server without error
+// ----------------------------------------------------------------------------
+// Net settings
+// ----------------------------------------------------------------------------
+// Whilst net settings perhaps aren't an integral part of an FPS config, they
+// are a fact of life in competitive TF2, and as such, they are included here.
+//
+// A common question I am asked -- what defines whether a good connection is
+// good or bad? Mostly personal preference. If you're not willing to make the
+// choice, try both and see which is better for you.
+//
+// Generally, meeting both of the following conditions would classify it as a
+// good connection:
+//
+// - Ping of >80 to the average server you join
+// - Generally no/negligible choke/loss (can be checked with `net_graph')
+//
+// There's some pretty good documentation on this here:
+// http://developer.valvesoftware.com/wiki/Source_Multiplayer_Networking
+//
+// Uncomment (remove the `//' from) one of the groups if you want to use them.
+// ----------------------------------------------------------------------------
 
-// ---------------------------------------------------------------------------------------------------------------------------------
-//                                              SETTINGS THAT YOU MAY WISH TO CUSTOMISE
-// ---------------------------------------------------------------------------------------------------------------------------------
+// Good connection
+//cl_cmdrate 66
+//cl_interp 0.0152
+//cl_interp_ratio 1
+//cl_lagcompensation 1
+//cl_pred_optimize 2
+//cl_smooth 0
+//cl_smoothtime 0.01
+//cl_updaterate 66
+//rate 60000
 
-// To uncomment a section, remove the // from all but the description line.
+// Bad connection
+//cl_cmdrate 40
+//cl_interp 0.025
+//cl_interp_ratio 1
+//cl_lagcompensation 1
+//cl_pred_optimize 2
+//cl_smooth 0
+//cl_smoothtime 0.01
+//cl_updaterate 40
+//rate 35000
 
-// -------
-// FPS CAP
-// -------
-fps_max "121" // Caps fps to improve performance. The best value for this is freq * 2 + 1. Do not set lower than cl_cmdrate or you will experience hitreg issues.
+// ----------------------------------------------------------------------------
+// Sprays
+// ----------------------------------------------------------------------------
+// Bear in mind that these are disabled on war servers due to `sv_pure 2'
+// anyway, so if you play competitive TF2, this won't help you.
+// ----------------------------------------------------------------------------
 
-// ------------
-// NET SETTINGS
-// ------------
+// Disable sprays
+cl_playerspraydisable 1
+r_spray_lifetime 0
 
-// Net settings for good connections -- UNCOMMENT THIS SECTION IF YOU WANT THESE SETTINGS
-//cl_cmdrate "66"
-//cl_interp "0.016" // Change to 0.024 for hitscan
-//cl_interp_ratio "1"
-//cl_lagcompensation "1"
-//cl_pred_optimize "2"
-//cl_smooth "0"
-//cl_smoothtime "0.01"
-//cl_updaterate "66"
-//rate "60000"
+// Enable sprays -- uncomment this section if you want these settings
+//cl_playerspraydisable 0
+//r_spray_lifetime 2
 
-// Net settings for moderate or bad internet connections -- UNCOMMENT THIS SECTION IF YOU WANT THESE SETTINGS
-//cl_cmdrate "40"
-//cl_interp "0.025" // Change to 0.0375 for hitscan
-//cl_interp_ratio "1"
-//cl_lagcompensation "1"
-//cl_pred_optimize "2"
-//cl_smooth "0"
-//cl_smoothtime "0.01"
-//cl_updaterate "40"
-//rate "35000"
+// ----------------------------------------------------------------------------
+// Shadows
+// ----------------------------------------------------------------------------
 
-// ------
-// SPRAYS
-// ------
+// Disable shadows
+mat_shadowstate 0
+r_shadowmaxrendered 0
+r_shadowrendertotexture 0
+r_shadows 0
 
-// Enable sprays -- not enabled by default
-cl_playerspraydisable "0"
-r_decals "200"
-r_spray_lifetime "2"
+// Enable shadows -- uncomment this section if you want these settings
+//mat_shadowstate 1
+//r_shadowmaxrendered 11
+//r_shadowrendertotexture 1 // High quality shadows. Sometimes turned on by
+                            // competitive TF2 players to see opponents standing
+                            // near the other side of a wall. You may see some
+                            // performance loss from setting this to `1'.
+//r_shadows 1
 
-// Disable sprays -- DELETE THIS SECTION IF YOU WANT SPRAYS ENABLED
-cl_playerspraydisable "1"
-r_decals "0"
-r_spray_lifetime "0"
+// ----------------------------------------------------------------------------
+// Facial features
+// ----------------------------------------------------------------------------
 
-// -------
-// SHADOWS
-// -------
+// Disable facial features
+r_eyes 0
+r_flex 0
+r_lod 2
+r_rootlod 2
+r_teeth 0
 
-// Enable shadows -- not enabled by default
-mat_shadowstate "1"
-r_shadowmaxrendered "11"
-r_shadowrendertotexture "0" // Set this to 1 for high definition shadows
-r_shadows "1"
+// Enable facial features -- uncomment this section if you want these settings
+//r_eyes 1
+//r_flex 1
+//r_lod 1 // Needs to be set to 1, otherwise they will still be disabled.
+//r_rootlod 1
+//r_teeth 1
 
-// Disable shadows -- DELETE THIS SECTION IF YOU WANT SHADOWS ENABLED
-mat_shadowstate "0"
-r_shadowmaxrendered "0"
-r_shadowrendertotexture "0"
-r_shadows "0"
+// ----------------------------------------------------------------------------
+// Ragdolls
+// ----------------------------------------------------------------------------
+// You will have reduced performance on deaths which produce ragdolls.
+// ----------------------------------------------------------------------------
 
-// ---------------
-// FACIAL FEATURES
-// ---------------
+// Disable ragdolls
+cl_ragdoll_fade_time 0
+cl_ragdoll_forcefade 1
+cl_ragdoll_physics_enable 0
+g_ragdoll_fadespeed 0
+g_ragdoll_lvfadespeed 0
+ragdoll_sleepaftertime 0
 
-// Enable facial features -- not enabled by default
-blink_duration "0.2"
-r_eyes "1"
-r_flex "1"
-r_lod "1"
-r_rootlod "1"
-r_teeth "1"
-flex_rules "1"
-flex_smooth "1"
+// Enable ragdolls -- uncomment this section if you want these settings
+//cl_ragdoll_fade_time 15
+//cl_ragdoll_forcefade 0
+//cl_ragdoll_physics_enable 1
+//g_ragdoll_fadespeed 600
+//g_ragdoll_lvfadespeed 100
+//ragdoll_sleepaftertime "5.0f"
 
-// Disable facial features -- DELETE THIS SECTION IF YOU WANT FACIAL FEATURES ENABLED
-blink_duration "0"
-r_eyes "0"
-r_flex "0"
-r_lod "2"
-r_rootlod "2"
-r_teeth "0"
-flex_rules "0"
-flex_smooth "0"
+// ----------------------------------------------------------------------------
+// Gibs
+// ----------------------------------------------------------------------------
+// You will have reduced performance on deaths which produce gibs.
+// ----------------------------------------------------------------------------
 
-// --------
-// RAGDOLLS
-// --------
+// Disable gibs
+cl_phys_props_enable 0
+cl_phys_props_max 0
+props_break_max_pieces 0
+r_propsmaxdist 1
+violence_ablood 0
+violence_agibs 0
+violence_hblood 0
+violence_hgibs 0
 
-// Enable ragdolls -- not enabled by default
-cl_ragdoll_fade_time "15"
-cl_ragdoll_forcefade "0"
-cl_ragdoll_physics_enable "1"
-g_ragdoll_fadespeed "600"
-g_ragdoll_lvfadespeed "100"
-ragdoll_sleepaftertime "5.0f"
+// Enable gibs -- uncomment this section if you want these settings
+//cl_phys_props_enable 1
+//cl_phys_props_max 128
+//props_break_max_pieces -1
+//r_propsmaxdist 1000
+//violence_ablood 1
+//violence_agibs 1
+//violence_hblood 1
+//violence_hgibs 1
 
-// Disable ragdolls -- DELETE THIS SECTION IF YOU WANT RAGDOLLS ENABLED
-cl_ragdoll_fade_time "0"
-cl_ragdoll_forcefade "1"
-cl_ragdoll_physics_enable "0"
-g_ragdoll_fadespeed "0"
-g_ragdoll_lvfadespeed "0"
-ragdoll_sleepaftertime "0"
-
-// ----
-// GIBS
-// ----
-
-// Enable gibs -- not enabled by default
-cl_phys_props_enable "1"
-cl_phys_props_max "128"
-props_break_max_pieces "-1"
-r_propsmaxdist "1000"
-violence_ablood "1"
-violence_agibs "1"
-violence_hblood "1"
-violence_hgibs "1"
-
-// Disable gibs -- DELETE THIS SECTION IF YOU WANT GIBS ENABLED
-cl_phys_props_enable "0"
-cl_phys_props_max "0"
-props_break_max_pieces "0"
-r_propsmaxdist "1"
-violence_ablood "0"
-violence_agibs "0"
-violence_hblood "0"
-violence_hgibs "0"
-
-// ---------------------------------------------------------------------------------------------------------------------------------
-//                                                      END OF CUSTOMISATION
-// ---------------------------------------------------------------------------------------------------------------------------------
-
-// Cleaning up and stopping debug flooding
-adsp_debug "0"
-cl_clearhinthistory "1"
-cl_debugrumble "0"
-cl_rumblescale "0"
-mat_debugdepthval "0"
-mat_debugdepthvalmax "0"
-mat_debug_postprocessing_effects "0"
-
+// ----------------------------------------------------------------------------
 // Graphical
-cl_burninggibs "0"
-cl_detaildist "0"
-cl_detailfade "0"
-cl_drawmonitors "0"
-cl_ejectbrass "0"
-cl_muzzleflash_dlight_1st "0"
-cl_ragdoll_collide "0"
-cl_show_splashes "0"
-func_break_max_pieces "0"
-glow_outline_effect_enable "0"
-lod_transitiondist "0"
-mat_aaquality "0"
-mat_alphacoverage "0"
-mat_antialias "1"
-mat_autoexposure_max "0"
-mat_autoexposure_min "0"
-mat_bloomscale "0"
-mat_bloom_scalefactor_scalar "0"
-mat_bumpmap "0"
-mat_colcorrection_disableentities "1"
-mat_colorcorrection "0"
-mat_compressedtextures "1"
-mat_disable_bloom "1"
-mat_disable_fancy_blending "1"
-mat_disable_lightwarp "1"
-mat_envmapsize "0"
-mat_envmaptgasize "0"
-mat_excludetextures "1"
-mat_fastnobump "0"
-mat_fastspecular "1"
-mat_filterlightmaps "0"
-mat_filtertextures "0"
-mat_forceaniso "0"
-mat_hdr_level "0"
-mat_max_worldmesh_vertices "0"
-mat_mipmaptextures "1"
-mat_monitorgamma "2.0" // Controls brightness, try 1.8 to get it brighter or 2.2 to get it darker. Only works in fullscreen.
-mat_motion_blur_enabled "0"
-mat_non_hdr_bloom_scalefactor "0"
-mat_parallaxmap "0"
-mat_picmip "2"
-mat_postprocess_x "0"
-mat_postprocess_y "0"
-mat_reducefillrate "1"
-mat_reduceparticles "1"
-mat_softwarelighting "0"
-mat_software_aa_blur_one_pixel_lines "0"
-mat_software_aa_strength "0"
-mat_software_aa_strength_vgui "0"
-mat_software_aa_tap_offset "0"
-mat_specular "0" // Set to 1 for shiny ubers
-mat_trilinear "0"
-mat_wateroverlaysize "0"
-mp_usehwmmodels "0"
-mp_usehwmvcds "0"
-muzzleflash_light "0"
-rope_averagelight "0"
-rope_collide "0"
-rope_rendersolid "0"
-rope_shake "0"
-rope_smooth "0"
-rope_smooth_enlarge "0"
-rope_smooth_maxalpha "0"
-rope_smooth_maxalphawidth "0"
-rope_smooth_minalpha "0"
-rope_smooth_minwidth "0"
-rope_solid_maxalpha "0"
-rope_solid_maxwidth "0"
-rope_solid_minalpha "0"
-rope_solid_minwidth "0"
-rope_subdiv "0"
-rope_wind_dist "0"
-r_3dsky "0"
-r_ambientboost "0"
-r_ambientfactor "0"
-r_ambientmin "0"
-r_avglight "0"
-r_bloomtintb "0"
-r_bloomtintexponent "0"
-r_bloomtintg "0"
-r_bloomtintr "0"
-r_cheapwaterend "1"
-r_cheapwaterstart "1"
-r_decalstaticprops "0"
-r_decal_cullsize "0"
-r_dopixelvisibility "0"
-r_drawbatchdecals "0"
-r_drawdetailprops "0"
-r_drawflecks "0"
-r_drawmodeldecals "0"
-r_drawspecificstaticprop "0"
-r_dynamic "0"
-r_eyemove "0"
-r_flashlightdepthtexture "0"
-r_flashlightrendermodels "0"
-r_flashlightrenderworld "0"
-r_forcewaterleaf "1"
-r_lightaverage "0"
-r_maxdlights "0"
-r_maxmodeldecal "0"
-r_maxnewsamples "0"
-r_maxsampledist "0"
-r_minnewsamples "0"
-r_physpropstaticlighting "0"
-r_pixelfog "0"
-r_radiosity "0"
-r_renderoverlayfragment "0"
-r_ropetranslucent "0"
-r_staticprop_lod "4"
-r_updaterefracttexture "0"
-r_visualizeproplightcaching "1"
-r_waterdrawreflection "0"
-r_waterdrawrefraction "1"
-r_waterforceexpensive "0"
-r_waterforcereflectentities "0"
-r_worldlights "0"
-tf_particles_disable_weather "1" // Set to 0 to enable weather effects on maps like Viaduct and Sawmill
+// ----------------------------------------------------------------------------
+// Now we come to the main brunt of the config. You probably don't want to mess
+// with this.
+// ----------------------------------------------------------------------------
+cl_detaildist 0
+cl_detailfade 0
+cl_drawmonitors 0
+cl_ejectbrass 0
+cl_new_impact_effects 0
+cl_show_splashes 0
+func_break_max_pieces 0
+glow_outline_effect_enable 0 // Cart glow effect.
+lod_transitiondist 0
+mat_antialias 1 // 1 = off, I get too many questions about this :)
+mat_bumpmap 0 // Controls bumpmapping. Setting this to 0 on dx9 will cause
+              // a strange `shine' effect to appear on all players.
+mat_colorcorrection 0
+mat_disable_bloom 1
+mat_disable_fancy_blending 1
+mat_disable_lightwarp 1
+mat_disable_ps_patch 1
+mat_filterlightmaps 0
+mat_filtertextures 0
+mat_forceaniso 1 // See my comment on `mat_antialias'.
+mat_hdr_level 0
+mat_monitorgamma 2.0 // Controls brightness, try 1.8 to make it brighter or 2.2
+                     // to get it darker. Only works in fullscreen.
+mat_motion_blur_enabled 0
+mat_parallaxmap 0
+mat_picmip 2 // Higher = more mipmapping. Without `sv_cheats 1', you're looking
+             // at a range from -1 to 2, -1 being the best quality, 2 being the
+             // worst.
+mat_reducefillrate 1
+mat_reduceparticles 1
+mat_specular 0 // Controls specularity. Setting this to 0 will make ubers
+               // non-shiny, and will remove some specular effects from in-game
+               // entities which support it. Setting this to 1 on dx8 will
+               // result in some strange `fire' textures replacing their
+               // appropriate counterparts, especially on medals, and certain
+               // hats.
+mat_trilinear 0
+mat_wateroverlaysize 1
+mp_decals 1 // `9' is a good value to still see the spread pattern from a
+            // scattergun without any real performance loss.
+r_3dsky 0
+r_ambientboost 0
+r_ambientfactor 0
+r_ambientmin 0
+r_avglight 0
+r_cheapwaterend 1
+r_cheapwaterstart 1
+r_decals 1
+r_decalstaticprops 0
+r_dynamic 0
+r_flashlightdepthtexture 0
+r_lightaverage 0
+r_maxdlights 2 // Specifies the maximum number of dynamic lights visible.
+               // High values may cause significant performance loss in combat.
+r_propsmaxdist 0
+r_renderoverlayfragment 0
+r_staticprop_lod 4
+r_waterdrawreflection 0
+r_waterdrawrefraction 1
+r_waterforceexpensive 0
+r_waterforceexpensive 0
+r_waterforcereflectentities 0
+r_worldlights 0
+rope_averagelight 0
+rope_collide 0
+rope_rendersolid 0
+rope_shake 0
+rope_smooth 0
+rope_subdiv 0
+rope_wind_dist 0
+tf_particles_disable_weather 1 // Disable weather effects on maps supporting
+                               // it, for example, setting this to `1'
+                               // disables rain effects on *_sawmill.
 
+// ----------------------------------------------------------------------------
 // Misc
-cl_predict "1"
-cl_predictweapons "1"
-cl_showfps "1" // Show unsmoothed FPS meter
-cl_showpluginmessages "0"
+// ----------------------------------------------------------------------------
+cl_disablehtmlmotd 1
+mat_clipz 1 // FX card users should set this to 0
+//m_rawinput 1 // Turn on raw mouse input. Commented out by default due to
+               // silly incompatibility with the Xfire overlay.
+mat_vsync 0 // Turn off vsync to avoid nasty I/O latency.
+r_fastzreject -1 // Values >1 enable a fast Z rejection algorithm, to be
+                 // performed on the GPU (as opposed to on the CPU). The
+                 // value `-1' autodetects hardware support for this
+                 // feature.
 
-// Performance
-cl_forcepreload "1" // Preloads maps, may cause a few seconds more loading the map at the benefit of a more consistent FPS (because the whole map is preloaded)
-cl_soundemitter_flush "1"
-//m_rawinput "1" // Uncomment to enable raw mouse input -- DO NOT ENABLE IF YOU ARE USING XFIRE OVERLAY
-mat_bufferprimitives "1"
-mat_clipz "1" // FX owners should set this to 0
-mat_disablehwmorph "0"
-mat_disable_ps_patch "1"
-mat_forcehardwaresync "0"
-mat_forcemanagedtextureintohardware "0"
-mat_framebuffercopyoverlaysize "0"
-mat_levelflush "0"
-mat_maxframelatency "0"
-mat_postprocessing_combine "1"
-mat_vsync "0"
-r_fastzreject "-1" // Some ATI cards aren't autodetected, if you know that your card supports it, try setting it to 1.
-r_hunkalloclightmaps "0"
-r_lightcache_zbuffercache "0"
-r_occlusion "1"
-r_unloadlightmaps "0"
-soundscape_flush "1"
-
+// ----------------------------------------------------------------------------
 // Sound
-dsp_enhance_stereo "0"
-dsp_slow_cpu "1" 
-snd_async_fullyasync "1" // Can help stop freezes and sound looping
-snd_pitchquality "0"
-snd_spatialize_roundrobin "1"
+// ----------------------------------------------------------------------------
+// I'd be hesitant to say that you would see a great deal of performance
+// improvement from lowering the sound quality, but in my experience as a
+// competitive TF2 player, lowering the sound quality makes determination of
+// directionality and distance that much easier. You may see a small FPS gain
+// with these settings, or you may not, either way will likely have a
+// negligible effect on performance.
+// ----------------------------------------------------------------------------
+dsp_enhance_stereo 0
+dsp_slow_cpu 1
+snd_async_fullyasync 1 // Having the sound run fully asynchronous has been
+                       // helpful in the past, as it seems to (for whatever
+                       // reason) reduce the number of TDRs experienced during
+                       // gameplay. There's some pretty good information on
+                       // TDRs (nerds only) here:
+                       // http://forums.nvidia.com/index.php?showtopic=65161
+snd_pitchquality 0
+snd_spatialize_roundrobin 1
 
+// ----------------------------------------------------------------------------
 // Threading
-cl_threaded_bone_setup "0"
-cl_threaded_client_leaf_system "0"
-mat_queue_mode "-1"
-r_threaded_client_shadow_manager "1"
-r_threaded_particles "1"
-r_threaded_renderables "1"
-r_queued_decals "0"
-r_queued_post_processing "0"
-r_queued_ropes "1"
-
-sv_cheats "0"
-
-// Console printout
+// ----------------------------------------------------------------------------
+mat_queue_mode 2 // mat_queue mode is another frequently asked about cvar, it
+                 // defines the threading method to be used by the material
+                 // system. It has been unstable to use in the past, but
+                 // nowadays it's generally okay.
+                 //
+                 // Here are the possible values:
+                 //     -2 legacy default
+                 //     -1 default
+                 //      0 synchronous single thread
+                 //      1 queued single thread
+                 //      2 queued multithreaded
+                 //
+                 // If you have problems with the value `2', try setting it to
+                 // `-1'.
+                 //
+                 // As an aside, there are quite a few bugs in the demo system
+                 // that occur when mat_queue_mode is set to a value that is
+                 // not `-1'. If you intend to do work with the demo system,
+                 // maybe you should change this.
+                 //
+                 // In previous FPS configs I explicitly stated some threading
+                 // settings. If there has been one thing I have learned, it's
+                 // best just to leave them well alone. What works for most
+                 // often leads to completely unreproducable errors being
+                 // reported.
+                 
+// ----------------------------------------------------------------------------
+// Print to console
+// ----------------------------------------------------------------------------
 clear
 echo "-------------------------------------------------------"
 echo "             Chris' maxframes config loaded.           "
 echo "-------------------------------------------------------"
 echo "Please direct all comments/queries/whatnot to"
 echo "#christf2 on QuakeNet."
-echo " "
+echo ""
 echo "-------------------------------------------------------"
 echo "                      Memory stats                     "
 echo "-------------------------------------------------------"
 memory
-echo " "
+echo ""
 echo "-------------------------------------------------------"
 echo "                      Code support                     "
 echo "-------------------------------------------------------"

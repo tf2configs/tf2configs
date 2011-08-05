@@ -1,0 +1,66 @@
+#!/bin/bash
+
+for _file in maxframes highquality; do
+    [[ -r ${_file} ]] || { printf '%s\n' "Can't access ${_file}" >&2; exit 1; }
+done
+
+# Convert maxframes to highframes
+sed -e 's|maxframes|highframes|g' \
+	-e 's|^\(mat_filterlightmaps\) [0-9]\+|\1 1|g' \
+	-e 's|^\(mat_filtertextures\) [0-9]\+|\1 1|g' \
+	-e 's|^\(mat_picmip\) [0-9]\+|\1 1|g' \
+	-e 's|^\(r_decals\) [0-9]\+|\1 9|g' \
+	-e 's|^\(mp_decals\) [0-9]\+|\1 9|g' \
+	-e 's|^\(mat_trilinear\) [0-9]\+|\1 1|g' < maxframes > highframes
+	printf '%s\n' "" \
+                  "----------------------------------------------------------------" \
+                  "HIGHFRAMES DIFF BEGINS" \
+                  "----------------------------------------------------------------" \
+                  ""
+	diff maxframes highframes
+	printf '%s\n' "" \
+                  "----------------------------------------------------------------" \
+                  "HIGHFRAMES DIFF ENDS" \
+                  "----------------------------------------------------------------" \
+                  ""
+	
+# Convert highframes to dx9frames
+sed -e 's|highframes|dx9frames|g' \
+	-e 's|\(-dxlevel\) [0-9]\+|\1 90|g' \
+    -e 's|^\(mat_bumpmap\) [0-9]\+|\1 1|g' \
+	-e 's|^\(r_pixelfog\) [0-9]\+|\1 1|g' < highframes > dx9frames
+	printf '%s\n' "" \
+                  "----------------------------------------------------------------" \
+                  "DX9FRAMES DIFF BEGINS" \
+                  "----------------------------------------------------------------" \
+                  ""
+	diff highframes dx9frames
+	printf '%s\n' "" \
+                  "----------------------------------------------------------------" \
+                  "DX9FRAMES DIFF ENDS" \
+                  "----------------------------------------------------------------" \
+                  ""
+
+
+# Convert highquality to maxquality
+sed -e 's|highquality|maxquality|g' \
+	-e 's|^\(cl_detaildist\) [0-9]\+|\1 8096|g' \
+	-e 's|^\(cl_maxrenderable_dist\) [0-9]\+|\1 8096|g' \
+	-e 's|^\(mat_aaquality\) [0-9]\+|\1 2|g' \
+	-e 's|^\(mat_antialias\) [0-9]\+|\1 8|g' \
+	-e 's|^\(mat_wateroverlaysize\) [0-9]\+|\1 512|g' \
+	-e 's|^\(mp_decals\) [0-9]\+|\1 4096|g' \
+    -e 's|^\(r_decals\) [0-9]\+|\1 4096|g' \
+	-e 's|^\(r_eyeglintlodpixels\) [0-9]\+|\1 4|g' \
+	-e 's|^\(r_maxmodeldecal\) [0-9]\+|\1 4096|g' \
+	-e 's|^\(r_radiosity\) [0-9]\+|\1 3|g' < highquality > maxquality
+	printf '%s\n' "" \
+                  "----------------------------------------------------------------" \
+                  "MAXQUALITY DIFF BEGINS" \
+                  "----------------------------------------------------------------" \
+                  ""
+	diff highquality maxquality
+	printf '%s\n' "" \
+                  "----------------------------------------------------------------" \
+                  "MAXQUALITY DIFF ENDS" \
+                  "----------------------------------------------------------------" \

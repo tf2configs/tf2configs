@@ -1,91 +1,114 @@
-// ---------------------------------------------------------------------------------------------------------------------------------
-// Chris' competitive medic config, requires at least a four button mouse
-// v1.055 | 16 June 2011 | fakkelbrigade.eu/chris/configs/
-// ---------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// Chris' competitive medic config
+// v1.056 | 05 August 2011 | fakkelbrigade.eu/chris/configs/
+// ----------------------------------------------------------------------------
 // Problems or questions? Contact me at #christf2 on QuakeNet.
-// ---------------------------------------------------------------------------------------------------------------------------------
-// PUT YOUR AUTOCALL PERCENTAGE INSTEAD OF 50 THE BIT MARKED "Initial autocall percentage"
-// ---------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // Binds:
 // F1 = Tap twice to move to new spawn room
 // F2 = Have all teammates nearby show their location
 // M1 = Medi gun/kritzkrieg
-// M2 = Syringe gun/blutsauger, when getting out will make all teammates call out
+// M2 = Syringe gun/blutsauger, when getting out will make all teammates call
+//      out
 // M3 = Bonesaw/ubersaw
-// M4 = Charge, will switch to medi gun/kritzkrieg automatically, will drops any intelligence being carried, and will also mask the "go go go" voice command
-// C = Vocalise fake ubercharge to enemy team
+// M4 = Charge, will switch to medi gun/kritzkrieg automatically, will drops
+//      any intelligence being carried, and will also mask the "go go go"
+//      voice trigger
+// C = Vocalise fake ubercharge
 //
 // Shift commands:
-// SHIFT + C = Mask "I am fully charged"
-// SHIFT + O = Kill self (to move place in spawn etc)
-// ---------------------------------------------------------------------------------------------------------------------------------
-// If you want to automatically undo this when changing to another class, put this in the config for that class (obviously uncomment it first)
-// You might want to put it in your autoexec as well, because binds are retained between sessions
+// SHIFT + C = Mask
+// SHIFT + O = Kill self (to move place in spawn, etc)
+// ----------------------------------------------------------------------------
+// If you want to automatically undo this when changing to another class, put
+// this in the config for that class (obviously uncomment it first)
+
+// (You might want to put it in your autoexec as well, because binds are
+// retained between sessions)
 //
-// alias "resetmedcfg" "unbind "shift"; bind "mouse1" "+attack";bind "mouse2" "+attack2";bind "mwheelup" "invprev";bind "mwheeldown" "invnext";unbind "mouse3";unbind "mouse4";bind "C" "voice_menu_3";-forward;echo "*** MEDIC CONFIG UNLOADED ***""
+// alias "resetmedcfg" "unbind "shift";bind "mouse1" "+attack";bind "mouse2" "+attack2";bind "mwheelup" "invprev";bind "mwheeldown" "invnext";unbind "mouse3";unbind "mouse4";bind "C" "voice_menu_3";-forward;echo "*** MEDIC CONFIG UNLOADED ***""
 // resetmedcfg
 //
 // OR
 //
 // bind a key to it in your autoexec only like:
 //
-// alias "resetmedcfg" "unbind "shift"; bind "mouse1" "+attack";bind "mouse2" "+attack2";bind "mwheelup" "invprev";bind "mwheeldown" "invnext";unbind "mouse3";unbind "mouse4";bind "C" "voice_menu_3";-forward;echo "*** MEDIC CONFIG UNLOADED ***""
+// alias "resetmedcfg" "unbind "shift";bind "mouse1" "+attack";bind "mouse2" "+attack2";bind "mwheelup" "invprev";bind "mwheeldown" "invnext";unbind "mouse3";unbind "mouse4";bind "C" "voice_menu_3";-forward;echo "*** MEDIC CONFIG UNLOADED ***""
 // bind "p" "resetmedcfg"
 // resetmedcfg
-// ---------------------------------------------------------------------------------------------------------------------------------
-//                                                           CONFIG BEGINS
-// ---------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 
-// Auto call changer
-alias "autocall_initial" "hud_medicautocallersthreshold "50"" // Initial autocall percentage
-alias "autocall_temp" "hud_medicautocallersthreshold "150"" // Autocall percentage when getting out blutsauger/syringe
-alias "+autocall_temp_hit" "autocall_temp"
-alias "-autocall_temp_hit" "autocall_initial"
+// ----------------------------------------------------------------------------
+// Autocall changer
+// ----------------------------------------------------------------------------
+// An autocall changer is useful to get a 'radar' like effect to visualise the
+// location of players around you.
+// ----------------------------------------------------------------------------
+alias autocall_initial "hud_medicautocallersthreshold 50" // Initial autocall
+                                                          // percentage
+alias autocall_temp "hud_medicautocallersthreshold 150" // Autocall percentage
+                                                        // when getting out
+					  								    // blutsauger/syringe
+alias +autocall_temp_hit "autocall_temp"
+alias -autocall_temp_hit "autocall_initial"
 
-// Medi gun/kritzkrieg
-alias "+heal" "slot2;+attack;autocall_initial"
-alias "-heal" "-attack"
+// ----------------------------------------------------------------------------
+// Weapon aliases
+// ----------------------------------------------------------------------------
+alias +heal "slot2;+attack;autocall_initial"
+alias -heal "-attack"
+alias +needles "slot1;+attack;autocall_temp"
+alias -needles "-attack"
+alias +saw "slot3;+attack;autocall_temp"
+alias -saw "-attack"
 
-// Syringe gun/blutsauger
-alias "+needles" "slot1;+attack;autocall_temp"
-alias "-needles" "-attack"
+// ----------------------------------------------------------------------------
+// Ubercharge
+// ----------------------------------------------------------------------------
+alias +charge "+attack2;slot2;dropitem;say_team "*** CHARGE USED ***";voicemenu 0 0;autocall_initial"
+alias -charge "-attack2"
 
-// Bonesaw/ubersaw
-alias "+saw" "slot3;+attack;autocall_temp"
-alias "-saw" "-attack"
+// ----------------------------------------------------------------------------
+// Fake ubercharge
+// ----------------------------------------------------------------------------
+// Useful even against experienced teams, I often use it when I am at 70% and
+// they are at 100% when they are about to push, as it usually makes teams slow
+// down, because they don't think they have an advantage any more. Often if you
+// fake an ubercharge at a realistic time, you can get the few seconds you need
+// to get it yourself, it's saved countless rounds for me.
+// ----------------------------------------------------------------------------
+alias fakeuber "voicemenu 1 7;say_team "*** FAKED CHARGE ***""
 
-// Charge and notification
-alias "+charge" "+attack2;slot2;dropitem;say_team "*** CHARGE USED ***";voicemenu 0 0;autocall_initial"
-alias "-charge" "-attack2"
+// ----------------------------------------------------------------------------
+// Call masking
+// ----------------------------------------------------------------------------
+// Useful to make it more difficult for the enemy to tell when/if you have
+// uber. Any decent team will know anyway, though.
+// ----------------------------------------------------------------------------
+alias maskuber "voicemenu 0 0;say_team "*** CHARGE READY ***""
 
-// Fake charge and notification
-alias "fakeuber" "voicemenu 1 7;say_team "*** FAKED CHARGE ***""
-
-// Mask calls
-alias "maskuber" "voicemenu 0 0;say_team "*** CHARGE READY ***""
-
+// ----------------------------------------------------------------------------
 // Spawn move
-alias "forwardspawn_random" "join_class "random"; alias "forwardspawn_toggle" "forwardspawn_medic""
-alias "forwardspawn_medic" "join_class "medic"; alias "forwardspawn_toggle" "forwardspawn_random";say_team "*** MOVED SPAWN ***""
-alias "forwardspawn_toggle" "forwardspawn_random"
+// ----------------------------------------------------------------------------
+alias forwardspawn_random "join_class "random";alias "forwardspawn_toggle" "forwardspawn_medic""
+alias forwardspawn_medic "join_class "medic";alias "forwardspawn_toggle" "forwardspawn_random";say_team "*** MOVED SPAWN ***""
+alias forwardspawn_toggle "forwardspawn_random"
 
-// Shift mask
-alias "+shiftmask" "bind "C" "maskuber";bind "o" "kill""
-alias "-shiftmask" "bind "C" "fakeuber";unbind "o""
-
-// Rebind aliases
-alias "slot1bind" "slot1;autocall_temp"
-alias "slot2bind" "slot2;autocall_initial"
-
-// Bind
-bind "c" "fakeuber"
-bind "f1" "forwardspawn_toggle"
-bind "f2" "+autocall_temp_hit"
-bind "mouse1" "+heal"
-bind "mouse2" "+needles"
-bind "mouse3" "+saw"
-bind "mouse4" "+charge"
-bind "shift" "+shiftmask"
+// ----------------------------------------------------------------------------
+// Binding
+// ----------------------------------------------------------------------------
+alias +shiftmask "bind c "maskuber";bind o "kill""
+alias -shiftmask "bind c "fakeuber";unbind o"
+alias slot1bind "slot1;autocall_temp"
+alias slot2bind "slot2;autocall_initial"
+bind c "fakeuber"
+bind f1 "forwardspawn_toggle"
+bind f2 "+autocall_temp_hit"
+bind mouse1 "+heal"
+bind mouse2 "+needles"
+bind mouse3 "+saw"
+bind mouse4 "+charge"
+bind shift "+shiftmask"
 
 // Print to console
 echo "*** CHRIS' COMPETITIVE MEDIC CONFIG LOADED ***"
