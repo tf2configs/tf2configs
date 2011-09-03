@@ -1,7 +1,7 @@
 // Unexplained crashes? Try changing mat_queue_mode to `-1'.
 // ----------------------------------------------------------------------------
 // Chris' dx9frames config, designed to get you a large performance boost
-// v2.000 | 05 August 2011 | fakkelbrigade.eu/chris/configs/
+// v2.001 | 03 September 2011 | fakkelbrigade.eu/chris/configs/
 // ----------------------------------------------------------------------------
 // Problems or questions? Contact me at #christf2 on QuakeNet.
 // ----------------------------------------------------------------------------
@@ -29,7 +29,8 @@
 // for everyone to use the value `132' (2*66), as long as you can generally
 // keep that value stable without regular drops.
 // ----------------------------------------------------------------------------
-fps_max 132
+//fps_max 132 // Commented due to 2011-09-02 update causing jittering when fps is capped for some
+fps_max 0
 cl_showfps 1 // Show unsmoothed FPS meter
 
 // ----------------------------------------------------------------------------
