@@ -1,7 +1,7 @@
 // Unexplained crashes? Try changing mat_queue_mode to `-1'.
 // ----------------------------------------------------------------------------
 // Chris' dx9frames config, designed to get you a large performance boost
-// v2.001 | 03 September 2011 | fakkelbrigade.eu/chris/configs/
+// v2.002 | 05 October 2011 | fakkelbrigade.eu/chris/configs/
 // ----------------------------------------------------------------------------
 // Problems or questions? Contact me at #christf2 on QuakeNet.
 // ----------------------------------------------------------------------------
@@ -213,7 +213,7 @@ mat_picmip 1 // Higher = more mipmapping. Without `sv_cheats 1', you're looking
              // worst.
 mat_reducefillrate 1
 mat_reduceparticles 1
-mat_specular 0 // Controls specularity. Setting this to 0 will make ubers
+mat_specular 1 // Controls specularity. Setting this to 0 will make ubers
                // non-shiny, and will remove some specular effects from in-game
                // entities which support it. Setting this to 1 on dx8 will
                // result in some strange `fire' textures replacing their
