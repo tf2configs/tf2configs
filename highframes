@@ -141,7 +141,7 @@ cl_ragdoll_forcefade 1
 cl_ragdoll_physics_enable 0
 g_ragdoll_fadespeed 0
 g_ragdoll_lvfadespeed 0
-ragdoll_sleepddaftertime 0
+ragdoll_sleepaftertime 0
 
 // Enable ragdolls -- uncomment this section if you want these settings
 //cl_ragdoll_fade_time 15
