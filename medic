@@ -48,7 +48,7 @@ alias autocall_initial "hud_medicautocallersthreshold 50" // Initial autocall
                                                           // percentage
 alias autocall_temp "hud_medicautocallersthreshold 150" // Autocall percentage
                                                         // when getting out
-					  								    // blutsauger/syringe
+                                                        // blutsauger/syringe
 alias +autocall_temp_hit "autocall_temp"
 alias -autocall_temp_hit "autocall_initial"
 
