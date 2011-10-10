@@ -1,7 +1,7 @@
 // Unexplained crashes? Try changing mat_queue_mode to `-1'.
 // ----------------------------------------------------------------------------
 // Chris' highframes config, designed to get you a large performance boost
-// v2.002 | 05 October 2011 | fakkelbrigade.eu/chris/configs/
+// v2.003 | 10 October 2011 | fakkelbrigade.eu/chris/configs/
 // ----------------------------------------------------------------------------
 // Problems or questions? Contact me at #christf2 on QuakeNet.
 // ----------------------------------------------------------------------------
@@ -105,7 +105,7 @@ r_shadows 0
 // Enable shadows -- uncomment this section if you want these settings
 //mat_shadowstate 1
 //r_shadowmaxrendered 11
-//r_shadowrendertotexture 1 // High quality shadows. Sometimes turned on by
+//r_shadowrendertotexture 1 // Non-blobby shadows. Sometimes turned on by
                             // competitive TF2 players to see opponents standing
                             // near the other side of a wall. You may see some
                             // performance loss from setting this to `1'.
@@ -141,7 +141,7 @@ cl_ragdoll_forcefade 1
 cl_ragdoll_physics_enable 0
 g_ragdoll_fadespeed 0
 g_ragdoll_lvfadespeed 0
-ragdoll_sleepaftertime 0
+ragdoll_sleepddaftertime 0
 
 // Enable ragdolls -- uncomment this section if you want these settings
 //cl_ragdoll_fade_time 15
@@ -162,9 +162,7 @@ cl_phys_props_enable 0
 cl_phys_props_max 0
 props_break_max_pieces 0
 r_propsmaxdist 1
-violence_ablood 0
 violence_agibs 0
-violence_hblood 0
 violence_hgibs 0
 
 // Enable gibs -- uncomment this section if you want these settings
@@ -172,9 +170,7 @@ violence_hgibs 0
 //cl_phys_props_max 128
 //props_break_max_pieces -1
 //r_propsmaxdist 1000
-//violence_ablood 1
 //violence_agibs 1
-//violence_hblood 1
 //violence_hgibs 1
 
 // ----------------------------------------------------------------------------
@@ -199,11 +195,13 @@ mat_colorcorrection 0
 mat_disable_bloom 1
 mat_disable_fancy_blending 1
 mat_disable_lightwarp 1
-mat_disable_ps_patch 1
+mat_envmapsize 32
+mat_envmaptgasize 16
 mat_filterlightmaps 1
 mat_filtertextures 1
 mat_forceaniso 1 // See my comment on `mat_antialias'.
 mat_hdr_level 0
+mat_max_worldmesh_vertices 1024
 mat_monitorgamma 2.0 // Controls brightness, try 1.8 to make it brighter or 2.2
                      // to get it darker. Only works in fullscreen.
 mat_motion_blur_enabled 0
@@ -232,17 +230,17 @@ r_cheapwaterend 1
 r_cheapwaterstart 1
 r_decals 9
 r_decalstaticprops 0
+r_decal_cullsize 15
 r_dynamic 0
 r_flashlightdepthtexture 0
 r_lightaverage 0
-r_maxdlights 2 // Specifies the maximum number of dynamic lights visible.
+r_maxdlights 1 // Specifies the maximum number of dynamic lights visible.
                // High values may cause significant performance loss in combat.
 r_propsmaxdist 0
 r_renderoverlayfragment 0
 r_staticprop_lod 4
 r_waterdrawreflection 0
 r_waterdrawrefraction 1
-r_waterforceexpensive 0
 r_waterforceexpensive 0
 r_waterforcereflectentities 0
 r_worldlights 0
@@ -256,6 +254,8 @@ rope_wind_dist 0
 tf_particles_disable_weather 1 // Disable weather effects on maps supporting
                                // it, for example, setting this to `1'
                                // disables rain effects on *_sawmill.
+violence_ablood 0
+violence_hblood 0
 
 // ----------------------------------------------------------------------------
 // Misc
@@ -263,12 +263,13 @@ tf_particles_disable_weather 1 // Disable weather effects on maps supporting
 cl_disablehtmlmotd 1
 mat_clipz 1 // FX card users should set this to 0
 //m_rawinput 1 // Turn on raw mouse input. Commented out by default due to
-               // silly incompatibility with the Xfire overlay.
+               // silly incompatibility with the Xfire overlay. You should use
+               // it if you can!
 mat_vsync 0 // Turn off vsync to avoid nasty I/O latency.
 r_fastzreject -1 // Values >1 enable a fast Z rejection algorithm, to be
                  // performed on the GPU (as opposed to on the CPU). The
                  // value `-1' autodetects hardware support for this
-                 // feature.
+                 // feature, which is safer than forcing it.
 
 // ----------------------------------------------------------------------------
 // Sound
@@ -281,7 +282,6 @@ r_fastzreject -1 // Values >1 enable a fast Z rejection algorithm, to be
 // negligible effect on performance.
 // ----------------------------------------------------------------------------
 dsp_enhance_stereo 0
-dsp_slow_cpu 1
 snd_async_fullyasync 1 // Having the sound run fully asynchronous has been
                        // helpful in the past, as it seems to (for whatever
                        // reason) reduce the number of TDRs experienced during
@@ -319,7 +319,13 @@ mat_queue_mode 2 // mat_queue mode is another frequently asked about cvar, it
                  // best just to leave them well alone. What works for most
                  // often leads to completely unreproducable errors being
                  // reported.
-                 
+
+// ----------------------------------------------------------------------------
+// Misc
+// ----------------------------------------------------------------------------
+cl_forcepreload 1 // Force preloading
+mat_forcemanagedtextureintohardware 1 // 
+
 // ----------------------------------------------------------------------------
 // Print to console
 // ----------------------------------------------------------------------------
