@@ -324,7 +324,6 @@ mat_queue_mode 2 // mat_queue mode is another frequently asked about cvar, it
 // Misc
 // ----------------------------------------------------------------------------
 cl_forcepreload 1 // Force preloading
-mat_forcemanagedtextureintohardware 1 // 
 
 // ----------------------------------------------------------------------------
 // Print to console

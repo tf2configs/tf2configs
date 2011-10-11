@@ -200,7 +200,12 @@ mat_queue_mode 2 // mat_queue mode is another frequently asked about cvar, it
                  // best just to leave them well alone. What works for most
                  // often leads to completely unreproducable errors being
                  // reported.
-                 
+
+// ----------------------------------------------------------------------------
+// Misc
+// ----------------------------------------------------------------------------
+cl_forcepreload 1 // Force preloading
+
 // ----------------------------------------------------------------------------
 // Print to console
 // ----------------------------------------------------------------------------
