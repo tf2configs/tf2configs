@@ -1,7 +1,7 @@
 // Unexplained crashes? Try changing mat_queue_mode to `-1'.
 // ----------------------------------------------------------------------------
 // Chris' highframes config, designed to get you a large performance boost
-// v2.004 | 11 October 2011 | fakkelbrigade.eu/chris/configs/
+// v2.005 | 14 November 2011 | fakkelbrigade.eu/chris/configs/
 // ----------------------------------------------------------------------------
 // Problems or questions? Contact me at #christf2 on QuakeNet.
 // ----------------------------------------------------------------------------
@@ -282,6 +282,7 @@ r_fastzreject -1 // Values >1 enable a fast Z rejection algorithm, to be
 // negligible effect on performance.
 // ----------------------------------------------------------------------------
 dsp_enhance_stereo 0
+dsp_slow_cpu 1
 snd_async_fullyasync 1 // Having the sound run fully asynchronous has been
                        // helpful in the past, as it seems to (for whatever
                        // reason) reduce the number of TDRs experienced during
