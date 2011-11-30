@@ -1,14 +1,15 @@
 // Unexplained crashes? Try changing mat_queue_mode to `-1'.
 // ----------------------------------------------------------------------------
 // Chris' maxframes config, designed to get you a large performance boost
-// v2.005 | 14 November 2011 | fakkelbrigade.eu/chris/configs/
+// v2.007 | 30 November 2011 | fakkelbrigade.eu/chris/configs/
 // ----------------------------------------------------------------------------
 // Problems or questions? Contact me at #christf2 on QuakeNet.
 // ----------------------------------------------------------------------------
 // Launch options:
+// IMPORTANT: Remove -dxlevel 81 from the launch options after the first launch!
+//
 // Fullscreen: -dxlevel 81 -full -w WIDTH -h HEIGHT -console -novid -useforcedmparms -noforcemaccel -noforcemspd
 // Windowed:   -dxlevel 81 -sw -w WIDTH -h HEIGHT -console -noborder -novid -useforcedmparms -noforcemaccel -noforcemspd
-// Remove -dxlevel 81 from the launch options after the first launch!
 // ----------------------------------------------------------------------------
 
 // ----------------------------------------------------------------------------
@@ -29,9 +30,9 @@
 // for everyone to use the value `132' (2*66), as long as you can generally
 // keep that value stable without regular drops.
 // ----------------------------------------------------------------------------
+cl_showfps 1 // Show unsmoothed FPS meter
 //fps_max 132 // Commented due to 2011-09-02 update causing jittering when fps is capped for some
 fps_max 0
-cl_showfps 1 // Show unsmoothed FPS meter
 
 // ----------------------------------------------------------------------------
 // Net settings
@@ -55,9 +56,21 @@ cl_showfps 1 // Show unsmoothed FPS meter
 // Uncomment (remove the `//' from) one of the groups if you want to use them.
 // ----------------------------------------------------------------------------
 
+// LAN
+//cl_cmdrate 66
+//cl_interp 0 // We let cl_interp_ratio do the limiting, this just sets it to
+              // the minimum available.
+//cl_interp_ratio 0
+//cl_lagcompensation 0
+//cl_pred_optimize 2
+//cl_smooth 0
+//cl_smoothtime 0.01
+//cl_updaterate 66
+//rate 60000
+
 // Good connection
 //cl_cmdrate 66
-//cl_interp 0.0152
+//cl_interp 0
 //cl_interp_ratio 1
 //cl_lagcompensation 1
 //cl_pred_optimize 2
@@ -68,8 +81,8 @@ cl_showfps 1 // Show unsmoothed FPS meter
 
 // Bad connection
 //cl_cmdrate 40
-//cl_interp 0.025
-//cl_interp_ratio 1
+//cl_interp 0
+//cl_interp_ratio 2
 //cl_lagcompensation 1
 //cl_pred_optimize 2
 //cl_smooth 0
@@ -191,17 +204,18 @@ lod_transitiondist 0
 mat_antialias 1 // 1 = off, I get too many questions about this :)
 mat_bumpmap 0 // Controls bumpmapping. Setting this to 0 on dx9 will cause
               // a strange `shine' effect to appear on all players.
+mat_colcorrection_disableentities 1
 mat_colorcorrection 0
 mat_disable_bloom 1
 mat_disable_fancy_blending 1
 mat_disable_lightwarp 1
-mat_envmapsize 32
-mat_envmaptgasize 16
+mat_envmapsize 8
+mat_envmaptgasize 8
 mat_filterlightmaps 0
 mat_filtertextures 0
 mat_forceaniso 1 // See my comment on `mat_antialias'.
 mat_hdr_level 0
-mat_max_worldmesh_vertices 1024
+mat_max_worldmesh_vertices 512
 mat_monitorgamma 2.0 // Controls brightness, try 1.8 to make it brighter or 2.2
                      // to get it darker. Only works in fullscreen.
 mat_motion_blur_enabled 0
@@ -231,11 +245,15 @@ r_cheapwaterstart 1
 r_decals 1
 r_decalstaticprops 0
 r_decal_cullsize 15
+r_drawdetailprops 0
+r_drawmodeldecals 0
+r_drawflecks 0
 r_dynamic 0
 r_flashlightdepthtexture 0
+r_forcewaterleaf 1
 r_lightaverage 0
-r_maxdlights 1 // Specifies the maximum number of dynamic lights visible.
-               // High values may cause significant performance loss in combat.
+r_maxnewsamples 2
+r_maxsampledist 1
 r_propsmaxdist 0
 r_renderoverlayfragment 0
 r_staticprop_lod 4
@@ -243,7 +261,6 @@ r_waterdrawreflection 0
 r_waterdrawrefraction 1
 r_waterforceexpensive 0
 r_waterforcereflectentities 0
-r_worldlights 0
 rope_averagelight 0
 rope_collide 0
 rope_rendersolid 0
@@ -254,6 +271,7 @@ rope_wind_dist 0
 tf_particles_disable_weather 1 // Disable weather effects on maps supporting
                                // it, for example, setting this to `1'
                                // disables rain effects on *_sawmill.
+tracer_extra 0
 violence_ablood 0
 violence_hblood 0
 
@@ -261,7 +279,10 @@ violence_hblood 0
 // Misc
 // ----------------------------------------------------------------------------
 cl_disablehtmlmotd 1
+in_usekeyboardsampletime 0
 mat_clipz 1 // FX card users should set this to 0
+mat_forcehardwaresync 0
+mat_levelflush 1
 //m_rawinput 1 // Turn on raw mouse input. Commented out by default due to
                // silly incompatibility with the Xfire overlay. You should use
                // it if you can!
@@ -314,12 +335,15 @@ mat_queue_mode 2 // mat_queue mode is another frequently asked about cvar, it
                  // that occur when mat_queue_mode is set to a value that is
                  // not `-1'. If you intend to do work with the demo system,
                  // maybe you should change this.
-                 //
-                 // In previous FPS configs I explicitly stated some threading
-                 // settings. If there has been one thing I have learned, it's
-                 // best just to leave them well alone. What works for most
-                 // often leads to completely unreproducable errors being
-                 // reported.
+
+cl_threaded_bone_setup 0
+cl_threaded_client_leaf_system 0
+r_queued_decals 0
+r_queued_ropes 1
+r_queued_post_processing 0
+r_threaded_client_shadow_manager 1
+r_threaded_particles 1
+r_threaded_renderables 1
 
 // ----------------------------------------------------------------------------
 // Misc

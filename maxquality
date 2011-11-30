@@ -1,14 +1,15 @@
 // Unexplained crashes? Try changing mat_queue_mode to `-1'.
 // ----------------------------------------------------------------------------
 // Chris' maxquality config, designed to get you excellent quality
-// v2.002 | 11 October 2011 | fakkelbrigade.eu/chris/configs/
+// v2.004 | 30 November 2011 | fakkelbrigade.eu/chris/configs/
 // ----------------------------------------------------------------------------
 // Problems or questions? Contact me at #christf2 on QuakeNet.
 // ----------------------------------------------------------------------------
 // Launch options:
+// IMPORTANT: Remove -dxlevel 98 from the launch options after the first launch!
+//
 // Fullscreen: -dxlevel 98 -full -w WIDTH -h HEIGHT -console -novid -useforcedmparms -noforcemaccel -noforcemspd
 // Windowed:   -dxlevel 98 -sw -w WIDTH -h HEIGHT -console -noborder -novid -useforcedmparms -noforcemaccel -noforcemspd
-// Remove -dxlevel 98 from the launch options after the first launch!
 // ----------------------------------------------------------------------------
 
 // ----------------------------------------------------------------------------
@@ -29,9 +30,9 @@
 // for everyone to use the value `132' (2*66), as long as you can generally
 // keep that value stable without regular drops.
 // ----------------------------------------------------------------------------
+cl_showfps 0 // Don't show FPS meter
 //fps_max 132 // Commented due to 2011-09-02 update causing jittering when fps is capped for some
 fps_max 0
-cl_showfps 0 // Don't show FPS meter
 
 // ----------------------------------------------------------------------------
 // Net settings
@@ -55,9 +56,21 @@ cl_showfps 0 // Don't show FPS meter
 // Uncomment (remove the `//' from) one of the groups if you want to use them.
 // ----------------------------------------------------------------------------
 
+// LAN
+//cl_cmdrate 66
+//cl_interp 0 // We let cl_interp_ratio do the limiting, this just sets it to
+              // the minimum available.
+//cl_interp_ratio 0
+//cl_lagcompensation 0
+//cl_pred_optimize 2
+//cl_smooth 0
+//cl_smoothtime 0.01
+//cl_updaterate 66
+//rate 60000
+
 // Good connection
 //cl_cmdrate 66
-//cl_interp 0.0152
+//cl_interp 0
 //cl_interp_ratio 1
 //cl_lagcompensation 1
 //cl_pred_optimize 2
@@ -68,14 +81,15 @@ cl_showfps 0 // Don't show FPS meter
 
 // Bad connection
 //cl_cmdrate 40
-//cl_interp 0.025
-//cl_interp_ratio 1
+//cl_interp 0
+//cl_interp_ratio 2
 //cl_lagcompensation 1
 //cl_pred_optimize 2
 //cl_smooth 0
 //cl_smoothtime 0.01
 //cl_updaterate 40
 //rate 35000
+
 
 // ----------------------------------------------------------------------------
 // Graphical
@@ -142,7 +156,10 @@ r_waterforcereflectentities 1
 // ----------------------------------------------------------------------------
 // Misc
 // ----------------------------------------------------------------------------
+in_usekeyboardsampletime 0
 mat_clipz 1 // FX card users should set this to 0
+mat_forcehardwaresync 0
+mat_levelflush 1
 //m_rawinput 1 // Turn on raw mouse input. Commented out by default due to
                // silly incompatibility with the Xfire overlay.
 mat_vsync 0 // Turn off vsync to avoid nasty I/O latency.
@@ -200,6 +217,15 @@ mat_queue_mode 2 // mat_queue mode is another frequently asked about cvar, it
                  // best just to leave them well alone. What works for most
                  // often leads to completely unreproducable errors being
                  // reported.
+
+cl_threaded_bone_setup 0
+cl_threaded_client_leaf_system 0
+r_queued_decals 0
+r_queued_ropes 1
+r_queued_post_processing 0
+r_threaded_client_shadow_manager 1
+r_threaded_particles 1
+r_threaded_renderables 1
 
 // ----------------------------------------------------------------------------
 // Misc
