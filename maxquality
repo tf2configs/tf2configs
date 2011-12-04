@@ -1,7 +1,7 @@
 // Unexplained crashes? Try changing mat_queue_mode to `-1'.
 // ----------------------------------------------------------------------------
 // Chris' maxquality config, designed to get you excellent quality
-// v2.004 | 30 November 2011 | fakkelbrigade.eu/chris/configs/
+// v2.005 | 04 December 2011 | fakkelbrigade.eu/chris/configs/
 // ----------------------------------------------------------------------------
 // Problems or questions? Contact me at #christf2 on QuakeNet.
 // ----------------------------------------------------------------------------
@@ -115,9 +115,9 @@ mat_forceaniso 16
 mat_hdr_level 2
 mat_monitorgamma 2.0 // Controls brightness, try 1.8 to make it brighter or 2.2
                      // to get it darker. Only works in fullscreen.
-mat_motion_blur_enabled 1
-mat_motion_blur_forward_enabled 1
-mat_motion_blur_strength 1
+mat_motion_blur_enabled 0 // Disabled by default in v2.005 onwards
+mat_motion_blur_forward_enabled 0
+mat_motion_blur_strength 0
 mat_parallaxmap 1
 mat_picmip -1 // Higher = more mipmapping. Without `sv_cheats 1', you're looking
               // at a range from -1 to 2, -1 being the best quality, 2 being the
@@ -161,7 +161,8 @@ mat_clipz 1 // FX card users should set this to 0
 mat_forcehardwaresync 0
 mat_levelflush 1
 //m_rawinput 1 // Turn on raw mouse input. Commented out by default due to
-               // silly incompatibility with the Xfire overlay.
+               // silly incompatibility with the Xfire overlay. You should use
+               // it if you can!
 mat_vsync 0 // Turn off vsync to avoid nasty I/O latency.
 r_fastzreject -1 // Values >1 enable a fast Z rejection algorithm, to be
                  // performed on the GPU (as opposed to on the CPU). The
@@ -211,12 +212,6 @@ mat_queue_mode 2 // mat_queue mode is another frequently asked about cvar, it
                  // that occur when mat_queue_mode is set to a value that is
                  // not `-1'. If you intend to do work with the demo system,
                  // maybe you should change this.
-                 //
-                 // In previous FPS configs I explicitly stated some threading
-                 // settings. If there has been one thing I have learned, it's
-                 // best just to leave them well alone. What works for most
-                 // often leads to completely unreproducable errors being
-                 // reported.
 
 cl_threaded_bone_setup 0
 cl_threaded_client_leaf_system 0

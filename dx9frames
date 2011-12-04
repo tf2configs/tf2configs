@@ -1,7 +1,7 @@
 // Unexplained crashes? Try changing mat_queue_mode to `-1'.
 // ----------------------------------------------------------------------------
 // Chris' dx9frames config, designed to get you a large performance boost
-// v2.007 | 30 November 2011 | fakkelbrigade.eu/chris/configs/
+// v2.008 | 04 December 2011 | fakkelbrigade.eu/chris/configs/
 // ----------------------------------------------------------------------------
 // Problems or questions? Contact me at #christf2 on QuakeNet.
 // ----------------------------------------------------------------------------
@@ -201,7 +201,7 @@ cl_show_splashes 0
 func_break_max_pieces 0
 glow_outline_effect_enable 0 // Cart glow effect.
 lod_transitiondist 0
-mat_antialias 1 // 1 = off, I get too many questions about this :)
+mat_antialias 0
 mat_bumpmap 1 // Controls bumpmapping. Setting this to 0 on dx9 will cause
               // a strange `shine' effect to appear on all players.
 mat_colcorrection_disableentities 1
@@ -213,7 +213,7 @@ mat_envmapsize 8
 mat_envmaptgasize 8
 mat_filterlightmaps 1
 mat_filtertextures 1
-mat_forceaniso 1 // See my comment on `mat_antialias'.
+mat_forceaniso 1
 mat_hdr_level 0
 mat_max_worldmesh_vertices 512
 mat_monitorgamma 2.0 // Controls brightness, try 1.8 to make it brighter or 2.2
@@ -278,7 +278,6 @@ violence_hblood 0
 // ----------------------------------------------------------------------------
 // Misc
 // ----------------------------------------------------------------------------
-cl_disablehtmlmotd 1
 in_usekeyboardsampletime 0
 mat_clipz 1 // FX card users should set this to 0
 mat_forcehardwaresync 0
