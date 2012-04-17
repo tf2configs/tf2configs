@@ -131,7 +131,6 @@ mat_software_aa_quality 2
 mat_software_aa_strength 2
 mat_software_aa_strength_vgui 2
 mat_specular 1
-mat_vsync 0
 mat_wateroverlaysize 512
 mp_decals 4096
 mp_usehwmmodels 1
