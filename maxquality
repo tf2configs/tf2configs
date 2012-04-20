@@ -1,7 +1,7 @@
 // Unexplained crashes? Try changing mat_queue_mode to `-1'.
 // ----------------------------------------------------------------------------
 // Chris' maxquality config, designed to get you excellent quality
-// v2.005 | 04 December 2011 | fakkelbrigade.eu/chris/configs/
+// v2.006 | 20 April 2012 | fakkelbrigade.eu/chris/configs/
 // ----------------------------------------------------------------------------
 // Problems or questions? Contact me at #christf2 on QuakeNet.
 // ----------------------------------------------------------------------------
@@ -89,7 +89,6 @@ fps_max 0
 //cl_smoothtime 0.01
 //cl_updaterate 40
 //rate 35000
-
 
 // ----------------------------------------------------------------------------
 // Graphical
@@ -229,21 +228,8 @@ cl_forcepreload 1 // Force preloading
 // ----------------------------------------------------------------------------
 // Print to console
 // ----------------------------------------------------------------------------
-clear
 echo "-------------------------------------------------------"
 echo "           Chris' maxquality config loaded.           "
 echo "-------------------------------------------------------"
 echo "Please direct all comments/queries/whatnot to"
 echo "#christf2 on QuakeNet."
-echo ""
-echo "-------------------------------------------------------"
-echo "                      Memory stats                     "
-echo "-------------------------------------------------------"
-memory
-echo ""
-echo "-------------------------------------------------------"
-echo "                      Code support                     "
-echo "-------------------------------------------------------"
-r_3dnow
-r_sse2
-echo "-------------------------------------------------------"
