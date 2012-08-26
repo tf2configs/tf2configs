@@ -1,7 +1,7 @@
 // Unexplained crashes? Try changing mat_queue_mode to `-1'.
 // ----------------------------------------------------------------------------
 // Chris' highframes config, designed to get you a large performance boost
-// v2.009 | 20 April 2012 | fakkelbrigade.eu/chris/configs/
+// v2.010 | 26 August 2012 | fakkelbrigade.eu/chris/configs/
 // ----------------------------------------------------------------------------
 // Problems or questions? Contact me at #christf2 on QuakeNet.
 // ----------------------------------------------------------------------------
@@ -55,18 +55,6 @@ fps_max 0
 //
 // Uncomment (remove the `//' from) one of the groups if you want to use them.
 // ----------------------------------------------------------------------------
-
-// LAN
-//cl_cmdrate 66
-//cl_interp 0 // We let cl_interp_ratio do the limiting, this just sets it to
-              // the minimum available.
-//cl_interp_ratio 0
-//cl_lagcompensation 0
-//cl_pred_optimize 2
-//cl_smooth 0
-//cl_smoothtime 0.01
-//cl_updaterate 66
-//rate 60000
 
 // Good connection
 //cl_cmdrate 66
