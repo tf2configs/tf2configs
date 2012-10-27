@@ -220,7 +220,7 @@ mat_specular 0 // Controls specularity. Setting this to 0 will make ubers
                // appropriate counterparts, especially on medals, and certain
                // hats.
 mat_trilinear 0
-mat_viewportscale 0.5 // Upscale viewport.
+mat_viewportscale 0.7 // Upscale viewport.
 mat_viewportupscale 1
 mat_wateroverlaysize 1
 mp_decals 1 // `9' is a good value to still see the spread pattern from a
