@@ -1,7 +1,7 @@
 // Unexplained crashes? Try changing mat_queue_mode to `-1'.
 // ----------------------------------------------------------------------------
 // Chris' dx9frames config, designed to get you a large performance boost
-// v2.011 | 27 October 2012 | fakkelbrigade.eu/chris/configs/
+// v2.012 | 27 October 2012 | fakkelbrigade.eu/chris/configs/
 // ----------------------------------------------------------------------------
 // Problems or questions? Contact me at #christf2 on QuakeNet.
 // ----------------------------------------------------------------------------
@@ -220,8 +220,6 @@ mat_specular 1 // Controls specularity. Setting this to 0 will make ubers
                // appropriate counterparts, especially on medals, and certain
                // hats.
 mat_trilinear 1
-mat_viewportscale 0.7 // Upscale viewport.
-mat_viewportupscale 1
 mat_wateroverlaysize 1
 mp_decals 9 // `9' is a good value to still see the spread pattern from a
             // scattergun without any real performance loss.
