@@ -16,8 +16,6 @@ sed -e 's|maxframes|highframes|g' \
 	-e 's|^\(mat_specular\) [0-9][0-9]*|\1 1|g' \
 	-e 's|^\(r_decals\) [0-9][0-9]*|\1 9|g' \
 	-e 's|^\(mp_decals\) [0-9][0-9]*|\1 9|g' \
-	-e '\|^\(mat_viewportscale\) 0\.[0-9]|d' \
-	-e '\|^\(mat_viewportupscale\) [0-9][0-9]*|d' \
 	-e 's|^\(mat_trilinear\) [0-9][0-9]*|\1 1|g' < maxframes > highframes || _die 2 "Failed to convert maxframes to highframes."
 
 sed -e 's|highframes|dx9frames|g' \

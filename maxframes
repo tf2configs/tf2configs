@@ -1,7 +1,7 @@
 // Unexplained crashes? Try changing mat_queue_mode to `-1'.
 // ----------------------------------------------------------------------------
 // Chris' maxframes config, designed to get you a large performance boost
-// v2.013 | 1 November 2012 | fakkelbrigade.eu/chris/configs/
+// v2.014 | 1 November 2012 | fakkelbrigade.eu/chris/configs/
 // ----------------------------------------------------------------------------
 // Problems or questions? Contact me at #christf2 on QuakeNet.
 // ----------------------------------------------------------------------------
@@ -220,7 +220,7 @@ mat_specular 0 // Controls specularity. Setting this to 0 will make ubers
                // appropriate counterparts, especially on medals, and certain
                // hats.
 mat_trilinear 0
-mat_viewportscale 0.7 // Upscale viewport.
+mat_viewportscale 1 // Almost no performance gain from viewport upscaling.
 mat_viewportupscale 1
 mat_wateroverlaysize 1
 mp_decals 1 // `9' is a good value to still see the spread pattern from a
