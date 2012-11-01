@@ -21,7 +21,7 @@ sed -e 's|maxframes|highframes|g' \
 	-e 's|^\(mat_trilinear\) [0-9][0-9]*|\1 1|g' < maxframes > highframes || _die 2 "Failed to convert maxframes to highframes."
 
 sed -e 's|highframes|dx9frames|g' \
-	-e 's|\(-dxlevel\) [0-9][0-9]*|\1 90|g' \
+	-e 's|\(-dxlevel\) [0-9][0-9]*|\1 95|g' \
     -e 's|^\(mat_bumpmap\) [0-9][0-9]*|\1 1|g' \
 	-e 's|^\(r_pixelfog\) [0-9][0-9]*|\1 1|g' < highframes > dx9frames || _die 3 "Failed to convert highframes to dx9frames."
 

@@ -1,15 +1,15 @@
 // Unexplained crashes? Try changing mat_queue_mode to `-1'.
 // ----------------------------------------------------------------------------
 // Chris' dx9frames config, designed to get you a large performance boost
-// v2.012 | 27 October 2012 | fakkelbrigade.eu/chris/configs/
+// v2.013 | 1 November 2012 | fakkelbrigade.eu/chris/configs/
 // ----------------------------------------------------------------------------
 // Problems or questions? Contact me at #christf2 on QuakeNet.
 // ----------------------------------------------------------------------------
 // Launch options:
-// IMPORTANT: Remove -dxlevel 90 from the launch options after the first launch!
+// IMPORTANT: Remove -dxlevel 95 from the launch options after the first launch!
 //
-// Fullscreen: -dxlevel 90 -full -w WIDTH -h HEIGHT -console -novid -useforcedmparms -noforcemaccel -noforcemspd
-// Windowed:   -dxlevel 90 -sw -w WIDTH -h HEIGHT -console -noborder -novid -useforcedmparms -noforcemaccel -noforcemspd
+// Fullscreen: -dxlevel 95 -full -w WIDTH -h HEIGHT -console -novid -useforcedmparms -noforcemaccel -noforcemspd
+// Windowed:   -dxlevel 95 -sw -w WIDTH -h HEIGHT -console -noborder -novid -useforcedmparms -noforcemaccel -noforcemspd
 // ----------------------------------------------------------------------------
 
 // ----------------------------------------------------------------------------
