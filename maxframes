@@ -1,7 +1,7 @@
 // Unexplained crashes? Try changing mat_queue_mode to `-1'.
 // ----------------------------------------------------------------------------
 // Chris' maxframes config, designed to get you a large performance boost
-// v2.014 | 1 November 2012 | fakkelbrigade.eu/chris/configs/
+// v2.015 | 1 November 2012 | fakkelbrigade.eu/chris/configs/
 // ----------------------------------------------------------------------------
 // Problems or questions? Contact me at #christf2 on QuakeNet.
 // ----------------------------------------------------------------------------
@@ -184,6 +184,7 @@ cl_detaildist 0
 cl_detailfade 0
 cl_drawmonitors 0
 cl_ejectbrass 0
+cl_jiggle_bone_framerate_cutoff 0 // Turns off jigglebones
 cl_new_impact_effects 0
 cl_show_splashes 0
 func_break_max_pieces 0
