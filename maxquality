@@ -10,6 +10,9 @@
 //
 // Fullscreen: -dxlevel 98 -full -w WIDTH -h HEIGHT -console -novid -useforcedmparms -noforcemaccel -noforcemspd
 // Windowed:   -dxlevel 98 -sw -w WIDTH -h HEIGHT -console -noborder -novid -useforcedmparms -noforcemaccel -noforcemspd
+//
+// FYI: dxlevel launch options have no effect on native OpenGL rendering,
+// for example on platforms such as Linux or Mac OS X.
 // ----------------------------------------------------------------------------
 
 // ----------------------------------------------------------------------------
