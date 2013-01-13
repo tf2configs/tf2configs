@@ -1,0 +1,43 @@
+#!/bin/sh -e
+
+: "${EDITOR=nano}"
+
+if [ "$#" -lt 2 ]; then 
+	cat << EOF
+Usage: ${0##*/} steam-username config <filename>
+
+Downloads a config to autoexec.cfg (or another absolute filename if specified).
+EOF
+    exit 64
+fi
+
+
+steamUsername="$1"
+config="$2"
+outputFile="$3"
+configURL="https://raw.github.com/cdown/tf2configs/master/$config"
+
+if [ -z "$outputFile" ]; then
+    outputDir="$HOME/.local/share/Steam/SteamApps/$steamUsername/Team Fortress 2/tf/cfg"
+    [ -d "$outputDir" ] || outputDir="$HOME/Steam/SteamApps/$steamUsername/Team Fortress 2/tf/cfg"
+    mkdir -p "$outputDir"
+    outputFile="$outputDir/$filename"
+fi
+
+if [ -e "$outputFile" ]; then
+    read -rp "Warning! $outputFile exists, overwrite? (y/N) " outputFileReply
+    [ "$outputFileReply" != y ] && exit 1 
+fi
+
+wget -qO "$outputFile" -- "$configURL"
+
+read -rp "Open config file in $EDITOR? (y/N) " editorReply
+[ "$editorReply" = y ] && "$EDITOR" "$outputFile"
+
+cat << EOF
+Config "$config" loaded into $outputFile.
+Add the following to your TF2 launch options (Library -> TF2 -> Properties -> Launch Options):"
+NOTE: Replace WIDTH and HEIGHT as appropriate.
+
+EOF
+awk '$3=="-dxlevel" { sub(/-dxlevel [[:digit:]]+/, "") ; sub(/^\/\/ /, "") ; print } ' < "$outputFile"
