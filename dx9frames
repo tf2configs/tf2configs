@@ -1,7 +1,7 @@
 // Unexplained crashes? Try changing mat_queue_mode to `-1'.
 // ----------------------------------------------------------------------------
 // Chris' dx9frames config, designed to get you a large performance boost
-// v2.015 | 1 November 2012 | fakkelbrigade.eu/chris/configs/
+// v2.016 | 25 January 2013 | fakkelbrigade.eu/chris/configs/
 // ----------------------------------------------------------------------------
 // Problems or questions? Contact me at #christf2 on QuakeNet.
 // ----------------------------------------------------------------------------
@@ -263,8 +263,8 @@ tf_particles_disable_weather 1 // Disable weather effects on maps supporting
                                // it, for example, setting this to `1'
                                // disables rain effects on *_sawmill.
 tracer_extra 0
-violence_ablood 0
-violence_hblood 0
+violence_ablood 1 // Setting ablood/hblood to 1 actually improves perf usually
+violence_hblood 1
 
 // ----------------------------------------------------------------------------
 // Misc
