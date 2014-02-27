@@ -281,6 +281,8 @@ r_fastzreject -1 // Values >1 enable a fast Z rejection algorithm, to be
                  // performed on the GPU (as opposed to on the CPU). The
                  // value `-1' autodetects hardware support for this
                  // feature, which is safer than forcing it.
+hud_medichealtargetmarker 0 // Removes Heal target markers, this causes the
+                            // medigun beam to disappear in dx8.
 
 // ----------------------------------------------------------------------------
 // Sound
