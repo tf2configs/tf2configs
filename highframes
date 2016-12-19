@@ -10,6 +10,9 @@
 //
 // Fullscreen: -dxlevel 81 -full -w WIDTH -h HEIGHT -console -novid -useforcedmparms -noforcemaccel -noforcemspd
 // Windowed:   -dxlevel 81 -sw -w WIDTH -h HEIGHT -console -noborder -novid -useforcedmparms -noforcemaccel -noforcemspd
+//
+// FYI: dxlevel launch options have no effect on native OpenGL rendering,
+// for example on platforms such as Linux or Mac OS X.
 // ----------------------------------------------------------------------------
 
 // ----------------------------------------------------------------------------
@@ -201,7 +204,8 @@ mat_disable_lightwarp 1
 mat_envmapsize 8
 mat_envmaptgasize 8
 mat_filterlightmaps 1
-mat_filtertextures 1
+mat_filtertextures 1 // Setting 0 breaks the game on Linux,
+                     // use 1 to avoid graphical glitches.
 mat_forceaniso 1
 mat_hdr_level 0
 mat_max_worldmesh_vertices 512

@@ -1,0 +1,8 @@
+# Stock tf/cfg files not worth tracking in git
+config_arena.cfg
+motd_entries.txt
+replay*.cfg
+server_blacklist.txt
+sixense_bindings.cfg
+user.scr
+config.cfg
